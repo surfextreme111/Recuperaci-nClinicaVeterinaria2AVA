@@ -47,16 +47,7 @@ public class ClinicaVeterinaria {
         
         //Men�
         do {
-        	System.out.println("=====================================================");
-            System.out.println("�Qu� quieres hacer?");
-            System.out.println("1. A�adir un nuevo cliente");
-            System.out.println("2. A�adir una nueva mascota para un cliente existente");
-            System.out.println("3. Mostrar todos los due�os");
-            System.out.println("4. Mostrar todas las mascotas");
-            System.out.println("5. Guardar la informaci�n de mascotas en ficheros");
-            System.out.println("6. Guardar la informaci�n de clientes en ficheros");            
-            System.out.println("7. Salir");
-            System.out.println("=====================================================");
+        	muestraMenu();
             try {
                 numero = Integer.parseInt(teclado.readLine());
             } catch (IOException e) {
@@ -70,23 +61,7 @@ public class ClinicaVeterinaria {
 			switch (numero) {
                 case 1:
                     //CLIENTE NUEVO
-                    System.out.println("INTRODUCIMOS EL CLIENTE");
-                    System.out.println("Introduce el nombre");
-                    String nombre = teclado.readLine();
-                    System.out.println("Introduce los apellidos");
-                    String apellidos = teclado.readLine();
-                    System.out.println("Introduce el DNI");
-                    String dni = teclado.readLine();
-                    System.out.println(intrEdad);
-                    int edad = 0;
-                    try {
-                        edad = Integer.parseInt(teclado.readLine());
-                    } catch (Exception e) {
-                        System.err.println(EXEPCIONCLIENTE);
-                        return;
-                    }
-                    Persona p1 = new Persona(nombre, apellidos, dni, edad);
-                    clientes.add(p1);
+				altaCliente(teclado, clientes, intrEdad);
                     break;
 
                 case 2:
@@ -119,11 +94,11 @@ public class ClinicaVeterinaria {
                         return;
                     }
                     System.out.println("Introduce el nombre");
-                    nombre = teclado.readLine();
+                    String nombre = teclado.readLine();
                     System.out.println("Introduce la raza");
                     String raza = teclado.readLine();
                     System.out.println(intrEdad);
-                    edad = 0;
+                    int edad = 0;
                     try {
                         edad = Integer.parseInt(teclado.readLine());
                     } catch (Exception e) {
@@ -203,5 +178,39 @@ public class ClinicaVeterinaria {
         } while (numero != 7);
 
     }
+
+	private static void altaCliente(BufferedReader teclado, ArrayList<Persona> clientes, String intrEdad)
+			throws IOException {
+		System.out.println("INTRODUCIMOS EL CLIENTE");
+		System.out.println("Introduce el nombre");
+		String nombre = teclado.readLine();
+		System.out.println("Introduce los apellidos");
+		String apellidos = teclado.readLine();
+		System.out.println("Introduce el DNI");
+		String dni = teclado.readLine();
+		System.out.println(intrEdad);
+		int edad = 0;
+		try {
+		    edad = Integer.parseInt(teclado.readLine());
+		} catch (Exception e) {
+		    System.err.println(EXEPCIONCLIENTE);
+		    return;
+		}
+		Persona p1 = new Persona(nombre, apellidos, dni, edad);
+		clientes.add(p1);
+	}
+
+	private static void muestraMenu() {
+		System.out.println("=====================================================");
+		System.out.println("�Qu� quieres hacer?");
+		System.out.println("1. A�adir un nuevo cliente");
+		System.out.println("2. A�adir una nueva mascota para un cliente existente");
+		System.out.println("3. Mostrar todos los due�os");
+		System.out.println("4. Mostrar todas las mascotas");
+		System.out.println("5. Guardar la informaci�n de mascotas en ficheros");
+		System.out.println("6. Guardar la informaci�n de clientes en ficheros");            
+		System.out.println("7. Salir");
+		System.out.println("=====================================================");
+	}
 
 }

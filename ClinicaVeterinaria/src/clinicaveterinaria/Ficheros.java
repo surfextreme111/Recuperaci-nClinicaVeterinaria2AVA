@@ -17,6 +17,8 @@ import gestion.*;
  *
  */
 public class Ficheros {
+	//ATRIBUTO
+	public String lecturaEscritura;
 	
 	private RandomAccessFile archivo = null;
 	private ByteArrayOutputStream escribir = null;
